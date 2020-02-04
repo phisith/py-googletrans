@@ -1,0 +1,26 @@
+from googletrans import Translator
+translator = Translator()
+
+choice = 0
+while choice != 5:
+    choice = int(input("Enter your choice:"))
+
+    if choice == 1:
+        Userinput = input("Text that you want to translate:")
+        Languages = input("Language that you want to translate to:")
+        t1 = translator.translate(Userinput, dest=Languages)
+        t2 = translator.translate(Userinput, dest='ko')
+        t3 = translator.translate(Userinput, dest='th')
+        t1.text
+        t2.text
+        t3.text
+        print(t1.text)
+        print(t2.text)
+        print(t3.text)
+
+    elif choice == 6:
+        print("bye bye")
+        break
+
+    else:
+        print(f'{choice} '"(The number is invalid, Please enter again)\n")
