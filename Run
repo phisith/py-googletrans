@@ -1,3 +1,31 @@
+import tkinter as tk
+from tkinter import ttk
+
+HEIGHT = 350
+WIDTH = 450
+
+root = tk.Tk()
+
+canvas = tk.Canvas(root, height=HEIGHT, width=WIDTH)
+canvas.pack()
+
+frame = tk.Frame(root, bg='#d8d8da')
+frame.place(relwidth=1, relheight=1)
+
+btn = tk.Button(root, text="Translate", font=('arial',15,'bold'), fg='black', bg='gray')
+btn.place(relx=0.43, rely=0.26,)
+
+text1 = tk.Label(frame, text='Python Translate App', font=('arial',20,'bold'),fg='black',bg='#d8d8da')
+text1.pack()
+
+text2 = tk.Label(frame, text='Input word to translate:', font=('arial',16,'bold'), bg='#d8d8da',fg='black')
+text2.place(relx =0, rely=0.18)
+
+entry = tk.Entry(frame,bg='white',justify='left',)
+entry.place(relx=0, rely=0.25,relwidth=0.38)
+
+root.mainloop()
+
 from googletrans import Translator
 translator = Translator()
 
