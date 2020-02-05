@@ -1,6 +1,26 @@
 import tkinter as tk
 from tkinter import ttk
 
+from googletrans import Translator
+translator = Translator()
+
+def getinput(Userinput,tranto1, tranto2,tranto3):
+
+    #Languages = input("Language that you want to translate to:")
+    t1 = translator.translate(Userinput, dest=tranto1)
+    t2 = translator.translate(Userinput, dest=tranto2)
+    t3 = translator.translate(Userinput, dest=tranto3)
+    lang1 = t1.text
+    lang2 = t2.text
+    lang3 = t3.text
+    D_t1 =tk.Label(lang1frame,text="" + lang1)
+    D_t1.place(relx=0,rely=0,relwidth=1, relheight=1)
+    D_t2 = tk.Label(lang2frame, text="" + lang2)
+    D_t2.place(relx=0, rely=0, relwidth=1, relheight=1)
+    D_t3 = tk.Label(lang3frame, text="" + lang3)
+    D_t3.place(relx=0, rely=0, relwidth=1, relheight=1)
+
+
 HEIGHT = 350
 WIDTH = 450
 
@@ -12,8 +32,9 @@ canvas.pack()
 frame = tk.Frame(root, bg='#d8d8da')
 frame.place(relwidth=1, relheight=1)
 
-btn = tk.Button(root, text="Translate", font=('arial',15,'bold'), fg='black', bg='gray')
-btn.place(relx=0.43, rely=0.26,)
+btn = tk.Button(root, text='Translate', font=('arial',15,'bold'), fg='black', bg='gray',
+                command=lambda: getinput(entry.get(),combobox1.get(),combobox2.get(),combobox3.get()))
+btn.place(relx=0.42, rely=0.26,)
 
 text1 = tk.Label(frame, text='Python Translate App', font=('arial',20,'bold'),fg='black',bg='#d8d8da')
 text1.pack()
@@ -25,15 +46,14 @@ entry = tk.Entry(frame,bg='white',justify='left',)
 entry.place(relx=0, rely=0.25,relwidth=0.38)
 
 
-combobox = ttk.Combobox(frame, values=['afrikaans','albanian','amharic','arabic','armenian','azerbaijani','basque',
+combobox1 = ttk.Combobox(frame, values=['afrikaans','albanian','amharic','arabic','armenian','azerbaijani','basque',
                                            'belarusian','bengali','bosnian','bulgarian','catalan','cebuano','chichewa',
                                            'chinese (simplified)','chinese (traditional)','corsican','croatian','czech',
                                            'danish','dutch','english','esperanto','estonian','filipino','finnish','french',
                                            'spanish','sundanese','swahili','swedish','tajik','tamil','telugu','thai',
                                            'turkish','ukrainian','urdu','uzbek','vietnamese','welsh','xhosa','yiddish',
                                            'yoruba','zulu','Filipino','Hebrew'])
-combobox.pack()
-combobox.place(relx=0.69, rely=0.20, relwidth=0.31)
+combobox1.place(relx=0.69, rely=0.20, relwidth=0.31)
 
 text3 = tk.Label(frame, text='To:', font=('arial',16,'bold'), bg='#d8d8da',fg='black')
 text3.place(relx=0.60, rely=0.20)
@@ -94,30 +114,4 @@ listbox2 = tk.Listbox(root)
 listbox2.place(relx=0, rely=0.74, relheight=0.25)
 root.mainloop()
 
-from googletrans import Translator
-translator = Translator()
-
-choice = 0
-while choice != 5:
-    choice = int(input("Enter your choice:"))
-
-    if choice == 1:
-        Userinput = input("Text that you want to translate:")
-        Languages = input("Language that you want to translate to:")
-        t1 = translator.translate(Userinput, dest=Languages)
-        t2 = translator.translate(Userinput, dest='ko')
-        t3 = translator.translate(Userinput, dest='th')
-        t1.text
-        t2.text
-        t3.text
-        print(t1.text)
-        print(t2.text)
-        print(t3.text)
-
-    elif choice == 6:
-        print("bye bye")
-        break
-
-    else:
-        print(f'{choice} '"(The number is invalid, Please enter again)\n")
 
