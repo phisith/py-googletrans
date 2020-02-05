@@ -87,9 +87,11 @@ text5.place(relx=0.60, rely=0.68)
 lang3frame = tk.Frame(root, bg='white')
 lang3frame.place(relx =0.62, rely=0.76, relwidth=0.38, relheight=0.15)
 
-hfframe = tk.Frame(root, bg='white')
-hfframe.place(relx =0, rely=0.44, relwidth=0.38, relheight=0.5)
+listbox = tk.Listbox(root)
+listbox.place(relx=0, rely=0.41, relheight=0.25)
 
+listbox2 = tk.Listbox(root)
+listbox2.place(relx=0, rely=0.74, relheight=0.25)
 root.mainloop()
 
 from googletrans import Translator
