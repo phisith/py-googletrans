@@ -24,7 +24,7 @@ def getinput(Userinput,tranto1, tranto2,tranto3):
     hl.append(Userinput)
     with open('history.txt', 'w') as j:
         j.write('\n'.join(hl))
-        
+
     t1 = translator.translate(Userinput, dest=tranto1)
     t2 = translator.translate(Userinput, dest=tranto2)
     t3 = translator.translate(Userinput, dest=tranto3)
@@ -130,6 +130,15 @@ listbox.place(relx=0, rely=0.41, relheight=0.25)
 
 listbox2 = tk.Listbox(root)
 listbox2.place(relx=0, rely=0.74, relheight=0.25)
+
+scroll = tk.Scrollbar(command=listbox.yview, orient='vertical')
+scroll.place(relx=0.365, rely=0.415, relheight=0.24)
+listbox.configure(yscrollcommand=scroll.set)
+
+scroll2 = tk.Scrollbar(command=listbox.yview, orient='vertical')
+scroll2.place(relx=0.365, rely=0.745, relheight=0.24)
+listbox2.configure(yscrollcommand=scroll.set)
+
 root.mainloop()
 
 
