@@ -4,9 +4,27 @@ from tkinter import ttk
 from googletrans import Translator
 translator = Translator()
 
+try:
+    with open('history.txt', 'r') as h:
+        hl = [line.strip() for line in h]
+
+except:
+    hl = []
+
+try:
+    with open('favorite.txt', 'r') as f:
+        fl = [line.strip() for line in f]
+
+except:
+    fl = []
+
 def getinput(Userinput,tranto1, tranto2,tranto3):
 
     #Languages = input("Language that you want to translate to:")
+    hl.append(Userinput)
+    with open('history.txt', 'w') as j:
+        j.write('\n'.join(hl))
+        
     t1 = translator.translate(Userinput, dest=tranto1)
     t2 = translator.translate(Userinput, dest=tranto2)
     t3 = translator.translate(Userinput, dest=tranto3)
