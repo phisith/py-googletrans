@@ -22,6 +22,7 @@ def getinput(Userinput,tranto1, tranto2,tranto3):
 
     #Languages = input("Language that you want to translate to:")
     hl.append(Userinput)
+    listbox.insert(tk.END, Userinput)
     with open('history.txt', 'w') as j:
         j.write('\n'.join(hl))
 
@@ -38,6 +39,27 @@ def getinput(Userinput,tranto1, tranto2,tranto3):
     D_t3 = tk.Label(lang3frame, text="" + lang3)
     D_t3.place(relx=0, rely=0, relwidth=1, relheight=1)
 
+def selectlist(event):
+    # get selected line index
+    select = listbox.curselection()[0]
+    # get the line's text
+    text_select = listbox.get(select)
+
+    # delete previous text in enter1
+    entry.delete(0, 50)
+    # now display the selected text
+    entry.insert(0, text_select)
+
+
+def selectlist2(event):
+    # get selected line index
+    select2 = listbox2.curselection()[0]
+    # get the line's text
+    text_select2 = listbox2.get(select2)
+    # delete previous text in enter1
+    entry.delete(0, 50)
+    # now display the selected text
+    entry.insert(0, text_select2)
 
 HEIGHT = 350
 WIDTH = 450
@@ -138,6 +160,15 @@ listbox.configure(yscrollcommand=scroll.set)
 scroll2 = tk.Scrollbar(command=listbox.yview, orient='vertical')
 scroll2.place(relx=0.365, rely=0.745, relheight=0.24)
 listbox2.configure(yscrollcommand=scroll.set)
+
+for i in hl:
+    listbox.insert(tk.END, i)
+
+for j in fl:
+    listbox2.insert(tk.END, j)
+
+listbox.bind('<ButtonRelease-1>', selectlist)
+listbox2.bind('<ButtonRelease-1>', selectlist2)
 
 root.mainloop()
 
