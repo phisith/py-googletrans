@@ -61,6 +61,12 @@ def selectlist2(event):
     # now display the selected text
     entry.insert(0, text_select2)
 
+def getfavorite(Addword):
+    fl.append(Addword)
+    listbox2.insert(tk.END, Addword)
+    with open('favorite.txt', 'w') as k:
+        k.write('\n'.join(fl))
+
 HEIGHT = 350
 WIDTH = 450
 
@@ -75,6 +81,10 @@ frame.place(relwidth=1, relheight=1)
 btn = tk.Button(root, text='Translate', font=('arial',15,'bold'), fg='black', bg='gray',
                 command=lambda: getinput(entry.get(),combobox1.get(),combobox2.get(),combobox3.get()))
 btn.place(relx=0.42, rely=0.26,)
+
+btn = tk.Button(root, text='Add Favorite', font=('arial',14,'bold'), fg='black', bg='gray',
+                command=lambda: getfavorite(entry.get()))
+btn.place(relx=0.40, rely=0.34,)
 
 text1 = tk.Label(frame, text='Python Translate App', font=('arial',20,'bold'),fg='black',bg='#d8d8da')
 text1.pack()
