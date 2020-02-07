@@ -162,7 +162,7 @@ class TokenAcquirer(object):
         e = []
         g = 0
         #size = len(text)
-        size = len(2)
+        size = len(a)
         while g < size:
             l = a[g]
             # just append if l is less than 128(ascii: DEL)
